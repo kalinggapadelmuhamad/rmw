@@ -1,0 +1,51 @@
+*{
+    box-sizing: border-box;
+    scroll-behavior: smooth;
+    font-family: 'Poppins' !important;
+}
+
+body{
+    background: #fafafa;
+}
+
+.loginSection {
+    padding: 10% 0;
+}
+
+.loginSection .loginBox{
+    color: #293b5f;
+    background: #FFF;
+    border-radius: 5px;
+    box-shadow: 0 25px 70px rgba(0, 0, 0, 0.07) !important;
+}
+
+.loginSection .loginBox h4{
+    font-weight: 600;
+}
+
+.loginSection .loginBox p{
+    font-weight: 300;
+}
+
+.loginSection .loginBox a{
+    text-decoration: none;
+}
+
+.loginSection .loginBox .fw-bold{
+    color: #293b5f !important;
+}
+
+.loginSection .btn-login{
+    display: block !important;
+    width: 100%;
+}
+
+@media (max-width: 720px){
+    
+    .loginSection {
+        padding: 40% 5%;
+        background: #fafafa;
+        min-height: 100vh;
+    }
+
+}
