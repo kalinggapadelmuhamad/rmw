@@ -30,3 +30,19 @@ Route::prefix('register')->group(function () {
     Route::get('company', [RegisterController::class, 'indexCompany'])->name('register.company');
     Route::get('employes', [RegisterController::class, 'indexEmployes'])->name('register.employes');
 });
+
+Route::get('/company', function () {
+    return view('dashboard.dashboard-company');
+});
+
+Route::get('/employee', function () {
+    return view('dashboard.dashboard-employee');
+});
+
+Route::get('/company/trial', function () {
+    return view('company-trial.company-trial');
+});
+
+Route::get('/employee/trial', function () {
+    return view('employee-trial.employee-trial');
+});
