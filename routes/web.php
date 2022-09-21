@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\RegisterController;
+use App\Http\Controllers\HashingController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -46,3 +47,5 @@ Route::get('/company/trial', function () {
 Route::get('/employee/trial', function () {
     return view('employee-trial.employee-trial');
 });
+
+Route::get('/hashing', [HashingController::class, 'index'])->name('hashing');
