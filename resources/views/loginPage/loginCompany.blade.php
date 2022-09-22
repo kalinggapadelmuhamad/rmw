@@ -33,6 +33,31 @@
         };
     </script>
     @enderror
+    @if (session('success'))
+        <div aria-live="polite" aria-atomic="true" class="position-relative">
+            <div class="toast-container top-0 end-0 p-3">
+                <!-- Then put toasts within -->
+                <div class="toast shadow border-0 border-start border-5 border-success rounded-0" role="alert" aria-live="assertive" aria-atomic="true" style="width: fit-content;">
+                    <div class="d-flex gap-5">
+                        <div class="toast-body d-flex flex-column pe-5">
+                            <h6>Success</h6>
+                            <p class="fw-light m-0">{{ session('success') }}</p>
+                        </div>
+                        <button type="button" class="btn-close me-2 m-auto" data-bs-dismiss="toast" aria-label="Close"></button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <script>
+            window.onload = (event) => {
+                let myAlert = document.querySelectorAll('.toast')[0];
+                if (myAlert) {
+                    let bsAlert = new bootstrap.Toast(myAlert);
+                    bsAlert.show();
+                }
+            };
+        </script>
+    @endif
     <section class="loginSection">
         <div class="container">
             <div class="row">

@@ -26,6 +26,10 @@
         ::placeholder{
             font-weight: 300;
         }
+
+        .fs-small{
+            font-size: 0.8rem;
+        }
     </style>
 </head>
 <body>
@@ -35,49 +39,84 @@
                 <div class="card-body">
                     <h3 class="card-title text-center fw-bold">Register Company Account</h3>
                     <p class="fw-light text-center my-3">Fill the form to create new company account</p>
-                    <form action="app/models/auth/auth.php" method="POST">
+                    <form action="{{ route('company.register') }}" method="POST">
+                        @csrf
                         <div class="text-start">
                             <div class="mb-3">
                                 <label for="email" class="form-label">Email</label>
                                 <input type="email" class="form-control" id="email" placeholder="email" name="email" required>
+                                @error('email')
+                                    <div class="text-danger fs-small fw-light my-2">{{ $message }}</div>
+                                @enderror
                             </div>
                             <div class="mb-3">
                                 <label for="password" class="form-label">Password</label>
-                                <input type="text" class="form-control" placeholder="Password" id="password">
+                                <input type="password" class="form-control" placeholder="password" id="password" name="password">
+                                @error('password')
+                                    <div class="text-danger fs-small fw-light my-2">{{ $message }}</div>
+                                @enderror
+                            </div>
+                            <div class="mb-3">
+                                <label for="password_confirmation" class="form-label">Password Confirmation</label>
+                                <input type="password" class="form-control" placeholder="password confirmation" name="password_confirmation" id="password_confirmation">
+                                @error('password_confirmation')
+                                    <div class="text-danger fs-small fw-light my-2">{{ $message }}</div>
+                                @enderror
                             </div>
                             <div class="mb-3">
                                 <label for="company_name" class="form-label">Company Name</label>
                                 <input type="text" class="form-control" id="company_name" placeholder="company name" name="company_name" required>
+                                @error('company_name')
+                                    <div class="text-danger fs-small fw-light my-2">{{ $message }}</div>
+                                @enderror
                             </div>
                             <div class="mb-3">
                                 <label for="admin_name" class="form-label">Admin Name</label>
                                 <input type="text" class="form-control" id="admin_name" placeholder="admin name" name="admin_name" required>
+                                @error('admin_name')
+                                    <div class="text-danger fs-small fw-light my-2">{{ $message }}</div>
+                                @enderror
                             </div>
                             <div class="mb-3">
                                 <label for="phone_number" class="form-label">Phone Number</label>
                                 <input type="text" class="form-control" id="phone_number" placeholder="phone number" name="phone_number" required>
+                                @error('phone_number')
+                                    <div class="text-danger fs-small fw-light my-2">{{ $message }}</div>
+                                @enderror
                             </div>
                             <div class="row">
                                 <div class="col-sm mb-3">
                                     <label for="country" class="form-label">Country</label>
                                     <input type="text" class="form-control" id="country" placeholder="country" name="country" required>
+                                    @error('country')
+                                        <div class="text-danger fs-small fw-light my-2">{{ $message }}</div>
+                                    @enderror
                                 </div>
                                 <div class="col-sm mb-3">
                                     <label for="city" class="form-label">City</label>
                                     <input type="text" class="form-control" id="city" placeholder="city" name="city" required>
+                                    @error('city')
+                                        <div class="text-danger fs-small fw-light my-2">{{ $message }}</div>
+                                    @enderror
                                 </div>
                                 <div class="col-sm mb-3">
                                     <label for="zip" class="form-label">Zip</label>
                                     <input type="text" class="form-control" id="zip" placeholder="zip" name="zip" required>
+                                    @error('zip')
+                                        <div class="text-danger fs-small fw-light my-2">{{ $message }}</div>
+                                    @enderror
                                 </div>
                             </div>
                             <div class="mb-3">
                                 <label for="company_address" class="form-label">Company Address</label>
                                 <textarea type="text" class="form-control" id="company_address" placeholder="company address" name="company_address" required></textarea>
+                                @error('company_address')
+                                    <div class="text-danger fs-small fw-light my-2">{{ $message }}</div>
+                                @enderror
                             </div>
                         </div>
                         <div class="d-grid">
-                            <button class="btn btn-primary mb-2" name="authIn">Register</button>
+                            <button class="btn btn-primary mb-2">Register</button>
                         </div>
                     </form>
                 </div>
