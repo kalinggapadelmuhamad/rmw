@@ -30,6 +30,7 @@ Route::prefix('login')->group(function () {
 //auth
 Route::prefix('auth')->group(function () {
     Route::post('company/login', [LoginController::class, 'companyLogin'])->name('company.login');
+    Route::post('company/register', [RegisterController::class, 'companyRegister'])->name('company.register');
 });
 
 Route::prefix('register')->group(function () {
