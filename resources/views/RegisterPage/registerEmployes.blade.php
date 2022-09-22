@@ -3,7 +3,7 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Register Company | Remote Working Monitoring</title>
+    <title>Register Employee | Remote Working Monitoring</title>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@100;300;500&display=swap" rel="stylesheet">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-iYQeCzEYFbKjA/T2uDLTpkwGzCiq6soy8tYaI1GyVh/UjpbCx/TYkiZhlZB6+fzT" crossorigin="anonymous">
     <style>
@@ -35,23 +35,43 @@
                 <div class="card-body">
                     <h3 class="card-title text-center fw-bold">Register Employee Account</h3>
                     <p class="fw-light text-center my-3">Fill the form to create new employee account</p>
-                    <form action="app/models/auth/auth.php" method="POST">
+                    <form action="{{ route('employee.register') }}" method="POST">
+                        @csrf
                         <div class="text-start">
                             <div class="mb-3">
                                 <label for="company_id" class="form-label">Company ID</label>
                                 <input type="text" class="form-control" id="company_id" placeholder="company id" name="company_id" required>
+                                @error('company_id')
+                                    <div class="text-danger fs-small fw-light my-2">{{ $message }}</div>
+                                @enderror
                             </div>
                             <div class="mb-3">
                                 <label for="name" class="form-label">Your name</label>
                                 <input type="text" class="form-control" id="name" placeholder="your name" name="name" required>
+                                @error('name')
+                                    <div class="text-danger fs-small fw-light my-2">{{ $message }}</div>
+                                @enderror
                             </div>
                             <div class="mb-3">
                                 <label for="email" class="form-label">Email</label>
                                 <input type="email" class="form-control" id="email" placeholder="email" name="email" required>
+                                @error('email')
+                                    <div class="text-danger fs-small fw-light my-2">{{ $message }}</div>
+                                @enderror
                             </div>
                             <div class="mb-3">
                                 <label for="password" class="form-label">Password</label>
-                                <input type="text" class="form-control" placeholder="Password" id="password">
+                                <input type="password" class="form-control" placeholder="Password" id="password" name="password">
+                                @error('password')
+                                    <div class="text-danger fs-small fw-light my-2">{{ $message }}</div>
+                                @enderror
+                            </div>
+                            <div class="mb-3">
+                                <label for="password_confirmation" class="form-label">Password Confirmation</label>
+                                <input type="password" class="form-control" placeholder="password_confirmation" id="password_confirmation" name="password_confirmation">
+                                @error('password_confirmation')
+                                    <div class="text-danger fs-small fw-light my-2">{{ $message }}</div>
+                                @enderror
                             </div>
                         </div>
                         <div class="d-grid">

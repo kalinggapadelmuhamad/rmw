@@ -51,4 +51,23 @@ class RegisterController extends Controller
     {
         return view('RegisterPage.registerEmployes');
     }
+
+    public function employeeRegister(Request $request)
+    {
+        $request->validate([
+            'company_id' => 'required|exists:companies,id',
+            'name' => 'required',
+            'email' => 'required|email',
+            'password' => 'required|confirmed|min:8',
+        ]);
+
+        $user = User::create([
+            'name' => $request->input('name'),
+            'email' => $request->input('email'),
+            'password' => Hash::make($request->input('password')),
+            'companyid' => $request->input('company_id'),
+        ]);
+
+        return redirect()->route('login.employes')->with('success', 'Register Success');
+    }
 }
