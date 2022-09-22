@@ -11,12 +11,12 @@ class RegisterController extends Controller
 {
     public function index()
     {
-        return view('registerPage.register');
+        return view('RegisterPage.register');
     }
 
     public function indexCompany()
     {
-        return view('registerPage.registerCompany');
+        return view('RegisterPage.registerCompany');
     }
 
     public function companyRegister(Request $request)
@@ -49,6 +49,6 @@ class RegisterController extends Controller
 
     public function indexEmployes()
     {
-        return view('registerPage.registerEmployes');
+        return view('RegisterPage.registerEmployes');
     }
 }
