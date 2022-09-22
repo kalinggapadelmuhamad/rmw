@@ -20,7 +20,7 @@ Route::get('/', function () {
     return view('index');
 });
 
-// route view login
+// route view login 
 Route::prefix('login')->group(function () {
     Route::get('/', [LoginController::class, 'index'])->name('login');
     Route::get('company', [LoginController::class, 'indexCompany'])->name('login.company');
