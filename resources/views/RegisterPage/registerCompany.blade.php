@@ -6,14 +6,35 @@
     <title>Register Company | Remote Working Monitoring</title>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@100;300;500&display=swap" rel="stylesheet">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-iYQeCzEYFbKjA/T2uDLTpkwGzCiq6soy8tYaI1GyVh/UjpbCx/TYkiZhlZB6+fzT" crossorigin="anonymous">
-    <link rel="stylesheet" href="{{ asset('assets/css/loginSection.css') }}">
+    <style>
+        *{
+            box-sizing: border-box;
+            scroll-behavior: smooth;
+            font-family: 'Poppins' !important;
+        }
+        body{
+            background: #fafafa;
+        }
+        .card{
+            color: #293b5f;
+            background: #FFF;
+            border-radius: 5px;
+            box-shadow: 0 25px 70px rgba(0, 0, 0, 0.07) !important;
+            border: none
+        }
+
+        ::placeholder{
+            font-weight: 300;
+        }
+    </style>
 </head>
 <body>
-    <section class="loginSection">
-        <div class="container">
-            <div class="row">
-                <div class="col-md-4 mx-auto loginBox px-4 py-4 text-center">
-                    <h4 class="mb-4">Register Company Account</h4>
+    <div class="container">
+        <div class="row min-vh-100 py-5 px-3 p-md-0">
+            <div class="card my-auto mx-auto" style="max-width:60rem">
+                <div class="card-body">
+                    <h3 class="card-title text-center fw-bold">Register Company Account</h3>
+                    <p class="fw-light text-center my-3">Fill the form to create new company account</p>
                     <form action="app/models/auth/auth.php" method="POST">
                         <div class="text-start">
                             <div class="mb-3">
@@ -37,15 +58,15 @@
                                 <input type="text" class="form-control" id="phone_number" placeholder="phone number" name="phone_number" required>
                             </div>
                             <div class="row">
-                                <div class="col mb-3">
+                                <div class="col-sm mb-3">
                                     <label for="country" class="form-label">Country</label>
                                     <input type="text" class="form-control" id="country" placeholder="country" name="country" required>
                                 </div>
-                                <div class="col mb-3">
+                                <div class="col-sm mb-3">
                                     <label for="city" class="form-label">City</label>
                                     <input type="text" class="form-control" id="city" placeholder="city" name="city" required>
                                 </div>
-                                <div class="col mb-3">
+                                <div class="col-sm mb-3">
                                     <label for="zip" class="form-label">Zip</label>
                                     <input type="text" class="form-control" id="zip" placeholder="zip" name="zip" required>
                                 </div>
@@ -55,13 +76,14 @@
                                 <textarea type="text" class="form-control" id="company_address" placeholder="company address" name="company_address" required></textarea>
                             </div>
                         </div>
-                        <button class="btn btn-primary btn-login mb-2" name="authIn">Register</button>
+                        <div class="d-grid">
+                            <button class="btn btn-primary mb-2" name="authIn">Register</button>
+                        </div>
                     </form>
                 </div>
             </div>
         </div>
-    </section>
+    </div>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-u1OknCvxWvY5kfmNBILK2hRnQC3Pr17a+RTT6rIHI7NnikvbZlHgTPOOmMi466C8" crossorigin="anonymous"></script>
-    
 </body>
 </html>
