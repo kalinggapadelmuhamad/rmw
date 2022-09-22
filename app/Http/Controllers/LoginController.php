@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Auth;
 
 class LoginController extends Controller
@@ -28,7 +29,10 @@ class LoginController extends Controller
         $password   = $request->input('password');
 
         if (auth()->attempt(['email' => $email, 'password' => $password])) {
+
             return redirect()->route('dashboard.company');
+            // $idUser = auth()->user()->id;
+            // $user = DB::table('role_members')->where('userid', $idUser)->first();
         }
 
         return redirect()->route('login.company')->withErrors([
@@ -39,5 +43,26 @@ class LoginController extends Controller
     public function indexEmployes()
     {
         return view('loginPage.loginEmploye');
+    }
+
+    public function employesLogin(Request $request)
+    {
+        $request->validate([
+            'companyid' => 'required|integer',
+            'email' => 'required|string',
+            'password' => 'required|string'
+        ]);
+
+        $companyId  = $request->input('companyid');
+        $email      = $request->input('email');
+        $password   = $request->input('password');
+
+        if (auth()->attempt(['companyid' => $companyId, 'email' => $email, 'password' => $password])) {
+            return redirect()->route('dashboard.employes');
+        }
+
+        return redirect()->route('login.employes')->withErrors([
+            'error' => 'Email atau password salah'
+        ]);
     }
 }
