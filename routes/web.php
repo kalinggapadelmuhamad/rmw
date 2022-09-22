@@ -27,7 +27,7 @@ Route::prefix('login')->group(function () {
     Route::get('employes', [LoginController::class, 'indexEmployes'])->name('login.employes');
 });
 
-//route login
+//route auth
 Route::prefix('auth')->group(function () {
     Route::post('company/login', [LoginController::class, 'companyLogin'])->name('company.login');
     Route::post('employes/login', [LoginController::class, 'employesLogin'])->name('employes.login');
