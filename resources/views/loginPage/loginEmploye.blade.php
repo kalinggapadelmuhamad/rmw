@@ -9,17 +9,42 @@
     <link rel="stylesheet" href="../assets/css/loginSection.css">
 </head>
 <body>
+    @error('error')
+    <div aria-live="polite" aria-atomic="true" class="position-relative">
+        <div class="toast-container top-0 end-0 p-3">
+            <!-- Then put toasts within -->
+            <div class="toast bg-warning" role="alert" aria-live="assertive" aria-atomic="true">
+                <div class="d-flex">
+                    <div class="toast-body text-white">
+                        {{ $message }}
+                    </div>
+                    <button type="button" class="btn-close btn-close-white me-2 m-auto" data-bs-dismiss="toast" aria-label="Close"></button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script>
+        window.onload = (event) => {
+            let myAlert = document.querySelectorAll('.toast')[0];
+            if (myAlert) {
+                let bsAlert = new bootstrap.Toast(myAlert);
+                bsAlert.show();
+            }
+        };
+    </script>
+    @enderror
     <section class="loginSection">
         <div class="container">
             <div class="row">
                 <div class="col-md-4 mx-auto loginBox px-4 py-4 text-center">
                     <h4>Login as employes</h4>
                     <p class="mb-4">Use your credentials to access your account.</p>
-                    <form action="app/models/auth/auth.php" method="POST">
+                    <form action="{{ route('employes.login') }}" method="POST">
+                        @csrf
                         <div class="text-start">
                             <div class="mb-3">
                                 <label for="exampleFormControlInput1" class="form-label">Conpany ID</label>
-                                <input type="email" class="form-control" id="exampleFormControlInput1" placeholder="2011010098" name="companyid" required>
+                                <input type="number" class="form-control" id="exampleFormControlInput1" placeholder="2011010098" name="companyid" required>
                             </div>
                             <div class="mb-3">
                                 <label for="exampleFormControlInput1" class="form-label">Email</label>
@@ -30,7 +55,7 @@
                                 <input type="password" class="form-control" id="exampleFormControlInput2" placeholder="*******" name="password" required>
                             </div>
                         </div>
-                        <button class="btn btn-primary btn-login mb-2" name="authIn">Login</button>
+                        <button class="btn btn-primary btn-login mb-2">Login</button>
                     </form>
                 </div>
             </div>

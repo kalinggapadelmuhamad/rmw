@@ -20,16 +20,17 @@ Route::get('/', function () {
     return view('index');
 });
 
-// router login
+// route view login
 Route::prefix('login')->group(function () {
     Route::get('/', [LoginController::class, 'index'])->name('login');
     Route::get('company', [LoginController::class, 'indexCompany'])->name('login.company');
     Route::get('employes', [LoginController::class, 'indexEmployes'])->name('login.employes');
 });
 
-//auth
+//route login
 Route::prefix('auth')->group(function () {
     Route::post('company/login', [LoginController::class, 'companyLogin'])->name('company.login');
+    Route::post('employes/login', [LoginController::class, 'employesLogin'])->name('employes.login');
     Route::post('company/register', [RegisterController::class, 'companyRegister'])->name('company.register');
 });
 
@@ -45,7 +46,7 @@ Route::get('/company', function () {
 
 Route::get('/employee', function () {
     return view('dashboard.dashboard-employee');
-});
+})->name('dashboard.employes');
 
 Route::get('/company/trial', function () {
     return view('company-trial.company-trial');
