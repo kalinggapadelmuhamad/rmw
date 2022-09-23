@@ -14,6 +14,7 @@ class CreateDepartementMembersTable extends Migration
     public function up()
     {
         Schema::create('departement_members', function (Blueprint $table) {
+            $table->id();
             $table->integer('departementid');
             $table->integer('userid');
             $table->timestamps();
