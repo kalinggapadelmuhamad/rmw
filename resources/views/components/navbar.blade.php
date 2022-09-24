@@ -8,13 +8,19 @@
   <ul class="navbar-nav navbar-right">
     <li class="dropdown">
       <a href="#" data-toggle="dropdown" class="nav-link dropdown-toggle nav-link-lg nav-link-user">
-        <div class="d-sm-none d-lg-inline-block">IFT Group </div>
+        <div class="d-sm-none d-lg-inline-block">Adam </div>
         <img alt="image" src={{ asset("assets/img/avatar/avatar-3.png") }} class="rounded-circle mr-1">
       </a>
       <div class="dropdown-menu dropdown-menu-right">
         <div class="dropdown-title">Logged in</div>
         <form action="">
-          <button type="submit" class="dropdown-item text-danger">
+          <button type="" class="dropdown-item text-dark">
+            <i class="fas fa-user"></i> Account
+          </button>
+        </form>
+        <form action="/logout" method="post">
+          @csrf
+          <button type="submit" class="dropdown-item text-dark">
             <i class="fas fa-sign-out-alt"></i> Logout
           </button>
         </form>

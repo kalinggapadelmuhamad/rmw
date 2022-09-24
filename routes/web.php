@@ -3,7 +3,9 @@
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\RegisterController;
 use App\Http\Controllers\HashingController;
+use App\Http\Controllers\DashboardController;
 use Illuminate\Support\Facades\Route;
+use SebastianBergmann\CodeCoverage\Report\Html\Dashboard;
 
 /*
 |--------------------------------------------------------------------------
@@ -26,6 +28,7 @@ Route::prefix('login')->group(function () {
     Route::get('company', [LoginController::class, 'indexCompany'])->name('login.company');
     Route::get('employes', [LoginController::class, 'indexEmployes'])->name('login.employes');
 });
+Route::post('/logout', [LoginController::class, 'logout']);
 
 //route auth
 Route::prefix('auth')->group(function () {
@@ -41,20 +44,8 @@ Route::prefix('register')->group(function () {
     Route::get('employes', [RegisterController::class, 'indexEmployes'])->name('register.employes');
 });
 
-Route::get('/company', function () {
-    return view('dashboard.dashboard-company');
-})->name('dashboard.company');
-
-Route::get('/employee', function () {
-    return view('dashboard.dashboard-employee');
-})->name('dashboard.employes');
-
-Route::get('/company/trial', function () {
-    return view('company-trial.company-trial');
-});
-
-Route::get('/employee/trial', function () {
-    return view('employee-trial.employee-trial');
+Route::prefix('dashboard')->group(function () {
+    Route::get('/trial', [DashboardController::class, 'index'])->name('dashboard.trial');
 });
 
 Route::get('/hashing', [HashingController::class, 'index'])->name('hashing');

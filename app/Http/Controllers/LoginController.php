@@ -30,7 +30,7 @@ class LoginController extends Controller
 
         if (auth()->attempt(['email' => $email, 'password' => $password])) {
 
-            return redirect()->route('dashboard.company');
+            return redirect()->route('dashboard.trial');
             // $idUser = auth()->user()->id;
             // $user = DB::table('role_members')->where('userid', $idUser)->first();
         }
@@ -58,11 +58,20 @@ class LoginController extends Controller
         $password   = $request->input('password');
 
         if (auth()->attempt(['companyid' => $companyId, 'email' => $email, 'password' => $password])) {
-            return redirect()->route('dashboard.employes');
+            return redirect()->route('dashboard.trial');
         }
 
         return redirect()->route('login.employes')->withErrors([
             'error' => 'Email atau password salah'
         ]);
+    }
+
+    public function logout(Request $request)
+    {
+        Auth::logout();
+    
+        $request->session()->invalidate();
+        $request->session()->regenerateToken();
+        return redirect('/');
     }
 }

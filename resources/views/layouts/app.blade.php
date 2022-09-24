@@ -22,13 +22,13 @@
   <script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
 </head>
 
-<body class="sidebar-gone">
+<body>
   <div id="app">
-    <div class="main-wrapper main-wrapper-1">
+    <div class="main-wrapper">
 
-      @include('components.navbar-employee')
+      @include('components.navbar')
       
-      @include('components.sidebar-employee')
+      @include('components.sidebar')
 
       <!-- Main Content -->
       <div class="main-content">
